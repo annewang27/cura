@@ -1,0 +1,14 @@
+{
+    "collections": [
+        {
+            "title": "Collection 1",
+            "summary": "Collection 1 description"
+        },
+        {
+            "title": "Collection 2",
+            "summary": "Collection 2 description"
+        }
+    ],
+    "artists": [],
+    "art":[]
+}

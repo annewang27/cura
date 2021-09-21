@@ -1,0 +1,31 @@
+{
+    "collections": [
+        {
+            "title": "Collection 1",
+            "summary": "Collection 1 description"
+        },
+        {
+            "title": "Collection 2",
+            "summary": "Collection 2 description"
+        }
+    ],
+    "artists": [],
+    "art":[
+        {
+            "title": "Art 1",
+            "artist": "Artist 1",
+            "created": "2021",
+            "collection_name": "Collection 1",
+            "filepath": "tests/files/test1.jpeg",
+            "summary": "Art 1 description"
+        },
+        {
+            "title": "Art 2",
+            "artist": "Artist 1",
+            "created": "2021",
+            "collection_name": "Collection 1",
+            "filepath": "tests/files/test2.jpeg",
+            "summary": "Art 2 description"
+        }
+    ]
+}

@@ -5,12 +5,19 @@ import sqlite3
 import json
 from pathlib import Path
 
+def create_app():
+    app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'very secret key'
+    app.config['DB_URI'] = 'database.db'
+    app.config['temp_photo_location'] = 'static/temp_photos/'
+    return app
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'very secret key'
+
+app = create_app()
+
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(app.config['DB_URI'])
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -101,7 +108,7 @@ def collection(collection_id):
 
     if art:
         for piece in art:
-            file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
+            file_path = Path(app.config['temp_photo_location'] + piece['title'].replace(" ", "_") + ".jpg")
             writeTofile(piece['photo'], file_path)
         return render_template('collection.html', collection=collection, art=art)
     else:
@@ -116,7 +123,7 @@ def artist(artist_id):
 
     if art:
         for piece in art:
-            file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
+            file_path = Path(app.config['temp_photo_location'] + piece['title'].replace(" ", "_") + ".jpg")
             writeTofile(piece['photo'], file_path)
         return render_template('artist.html', artist=artist, art=art)
     else:
