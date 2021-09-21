@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container intro-title">
+    <h1>{% block title %} Add a new collection {% endblock %}</h1>
+    <p>Don't forget to add art to the collection!</p>
+</div>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title"
+                   placeholder="Collection title" class="form-control"
+                   value="{{ request.form['title'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea name="summary" placeholder="Collection summary"
+                      class="form-control">{{ request.form['summary'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

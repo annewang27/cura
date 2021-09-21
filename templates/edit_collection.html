@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container intro-title">
+    <h1>{% block title %} Edit "{{ collection['title'] }}" {% endblock %}</h1>
+</div>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title"
+                   placeholder="Collection title" class="form-control"
+                   value="{{ request.form['title'] or collection['title'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea name="summary" placeholder="Collection summary"
+                      class="form-control">{{ request.form['summary'] or collection['summary'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <form action="{{ url_for('delete_collection', id=collection['id']) }}" method="POST">
+        <input type="submit" value="Delete collection"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Are you sure you want to delete this collection?')">
+    </form>
+</div>
+{% endblock %}

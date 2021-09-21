@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container intro-title">
+    <h1>{% block title %} Edit "{{ artist['full_name'] }}" {% endblock %}</h1>
+</div>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group"> 
+            <label for="full_name">Name</label>
+            <input type="text" name="full_name"
+                   placeholder="Firstname Lastname" class="form-control"
+                   value="{{ request.form['full_name'] or artist['full_name'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="text" name="dob"
+                   placeholder="Any format" class="form-control"
+                   value="{{ request.form['dob'] or artist['dob'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea name="summary" placeholder="Artist description"
+                      class="form-control">{{ request.form['summary'] or artist['summary'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+
+    <hr>
+    
+    <form action="{{ url_for('delete_artist', id=artist['id']) }}" method="POST">
+        <input type="submit" value="Delete artist"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Are you sure you want to delete this artist?')">
+    </form>
+</div>
+{% endblock %}

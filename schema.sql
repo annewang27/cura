@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS art;
+
+CREATE TABLE art (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    artist TEXT NOT NULL,
+    created TEXT NOT NULL,
+    gallery_id INTEGER NOT NULL,
+    summary TEXT NOT NULL,
+    photo BLOB NOT NULL
+);
+
+DROP TABLE IF EXISTS artist;
+
+CREATE TABLE artist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT NOT NULL,
+    dob TEXT NOT NULL,
+    summary TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS gallery;
+
+CREATE TABLE gallery (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    summary TEXT NOT NULL
+);

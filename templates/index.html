@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container intro-title">
+        <h1>{% block title %} Welcome to Cura {% endblock %}</h1>
+        <div>
+            <p>
+                Recently, there's been a shift towards more and more art galleries curating online versions of 
+                their collections to allow more people to experience art from home. While I don't 
+                own any of these pieces, nor have I seen most of them in person, over the years I have curated my own 
+                collections of art in the form of hand-written lists and sticky notes 
+                and this is my way of sharing some of that with others.
+            </p>
+        </div>
+    </div>
+    <div class="container index-grouping" >
+        <hr>
+        <div>
+            <h3 class="index-title">By Collection</h3>
+        </div>
+        <hr>
+        {% for collection in collections %}
+            <a href="{{ url_for('collection', collection_id=collection['id']) }}">
+                <h3 class="index-subtitle">{{ collection['title'] }}</h3>
+            </a>
+            <div>
+                <p>
+                    {{ collection['summary'] }}
+                </p>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+    <div class="container index-grouping">
+        <hr>
+        <div>
+            <h3 class="index-title">By Artist</h3>
+        </div>
+        <hr>
+        {% for artist in artists %}
+            <a href="{{ url_for('artist', artist_id=artist['id']) }}">
+                <h3 class="index-subtitle">{{ artist['full_name'] }}</h3>
+            </a>
+            <div>
+                <p>
+                    {{ artist['summary'] }}
+                </p>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    
+
+{% endblock %}

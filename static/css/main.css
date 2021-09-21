@@ -1,0 +1,38 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none; 
+}
+
+.navbar {
+    background-color:#1F2C13;
+}
+
+.intro-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.index-title {
+    color: #1F2C13;
+}
+
+.index-subtitle {
+    color: #A94802;
+}
+
+.index-grouping {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.edit-button {
+    margin-top: 20px;
+}
+
+.edit-art {
+    margin-top: 5px;
+}

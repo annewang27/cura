@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container intro-title">
+    <h1>{% block title %} Add a new artist {% endblock %}</h1>
+    <p>Don't forget to add some art by the artist!</p>
+</div>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group"> 
+            <label for="full_name">Name</label>
+            <input type="text" name="full_name"
+                   placeholder="Firstname Lastname" class="form-control"
+                   value="{{ request.form['full_name'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="text" name="dob"
+                   placeholder="Any format" class="form-control"
+                   value="{{ request.form['dob'] }}"></input>
+        </div>
+    
+        <div class="form-group">
+            <label for="summary">Summary</label>
+            <textarea name="summary" placeholder="Artist description"
+                      class="form-control">{{ request.form['summary'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

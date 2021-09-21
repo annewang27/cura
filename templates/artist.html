@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container intro-title">
+        <h2>{% block title %} {{ artist['full_name'] }} {% endblock %}</h2>
+        <h4>{{ artist['dob'] }}</h4>
+        <p>{{ artist['summary'] }}</p>
+
+        <div class="edit-button">
+            <a href="{{ url_for('edit_artist', id=artist['id']) }}">
+                <span class="badge badge-light">Edit artist</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="art-carousel" class="carousel slide" data-ride="carousel" data-interval="false">            
+        <div class="carousel-inner">
+
+            <div class="carousel-item active" id="{{ art[0]['title'] }}">
+                <img class="d-block w-100" src="{{ url_for('static', filename= 'temp_photos/' + art[0]['title'].replace(' ', '_') + '.jpg') }}" alt="First slide">
+
+                <div class="carousel-caption d-none d-md-block">
+                    <h4><i>{{ art[0]['title'] }}</i>, {{ art[0]['created'] }}</h4>
+                    <p>{{ art[0]['summary'] }}</p>
+                    <div class="edit-art">
+                        <a href="{{ url_for('edit_art', id=art[0]['id']) }}">
+                            <span class="badge badge-light">Edit</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {% for piece in art[1:] %}
+                <div class="carousel-item" id="{{ piece['title'] }}">
+                    <img class="d-block w-100" src="{{ url_for('static', filename= 'temp_photos/' + piece['title'].replace(' ', '_') + '.jpg') }}" alt="Next slide">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4><i>{{ piece['title'] }}</i>, {{ piece['created'] }}</h4>
+                        <p>{{ piece['summary'] }}</p>
+                        <div class="edit-art">
+                            <a href="{{ url_for('edit_art', id=piece['id']) }}">
+                                <span class="badge badge-light">Edit</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#art-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#art-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+{% endblock %}
