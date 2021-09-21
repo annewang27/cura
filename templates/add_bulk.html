@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container intro-title">
+    <h1>{% block title %} Add new data through a json file{% endblock %}</h1>
+    <p>
+        This is a shortcut to add multiple collections, artists, or art at once. Make sure every piece of art is added to 
+        a collection that either already exists or is being added in the same JSON. 
+    </p>
+    <p>
+        The JSON should contain a dictionary with three keys: collections, artists, art. To add items to a category, 
+        create a list containing the correct objects. For example, to add three paintings, create a list with 3 art 
+        objects as the value corresponding to the art key. If nothing is being added to a category, 
+        the dictionary key should still be there, but the corresponding value should be an empty list.
+    </p>
+    <p>
+        A collection should contain: title, and summary.
+    </p>
+    <p>
+        An artist should contain: full_name, dob, and summary.
+    </p>
+    <p>
+        An artwork should contain: title, artist, created, collection_name, filepath, and summary.
+    </p>
+</div>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="filepath">Filepath</label>
+            <input type="text" name="filepath"
+                   placeholder="path/to/file.json" class="form-control"
+                   value="{{ request.form['filepath'] }}"></input>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+    {% endblock %}
+</div>

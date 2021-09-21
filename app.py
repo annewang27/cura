@@ -2,6 +2,7 @@ from os import name
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 import sqlite3
+import json
 from pathlib import Path
 
 
@@ -76,6 +77,12 @@ def convertToBinary(filename):
     return blob
 
 
+def parseJSON(filename):
+    with open(filename) as file:
+        parsed = json.load(file)
+    return parsed
+
+
 # routes #
 
 @app.route('/')
@@ -93,6 +100,7 @@ def collection(collection_id):
     art = get_collection_art(collection_id)
 
     for piece in art:
+        # replace art instead of ignoring
         file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
         if not file_path.is_file():
             writeTofile(piece['photo'], file_path)
@@ -106,6 +114,7 @@ def artist(artist_id):
     art = get_artist_art(artist['full_name'])
 
     for piece in art:
+        # replace art instead of ignoring
         file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
         if not file_path.is_file():
             writeTofile(piece['photo'], file_path)
@@ -129,15 +138,14 @@ def add_art():
 
             query = """INSERT INTO art (title, artist, created, photo, gallery_id, summary) VALUES (?, ?, ?, ?, ?, ?)"""
             photo = convertToBinary(filepath)
-            collection_id = conn.execute('SELECT * FROM gallery WHERE title = ?', (collection,)).fetchone()
-            data_tuple = (title, artist, created, photo, collection_id, summary)
+            collection = conn.execute('SELECT * FROM gallery WHERE title = ?', (collection,)).fetchone()
+            data_tuple = (title, artist, created, photo, collection[0], summary)
             conn.execute(query, data_tuple)
 
             conn.commit()
             conn.close()
             return redirect(url_for('index'))
     return render_template('add_art.html')
-
 
 
 @app.route('/artist/add', methods=('GET', 'POST'))
@@ -161,7 +169,6 @@ def add_artist():
     return render_template('add_artist.html')
 
 
-
 @app.route('/collection/add', methods=('GET', 'POST'))
 def add_collection():
     if request.method == 'POST':
@@ -182,6 +189,44 @@ def add_collection():
     return render_template('add_collection.html')
 
 
+@app.route('/bulk/add', methods=('GET', 'POST'))
+def add_bulk():
+    if request.method == 'POST':
+        filepath = request.form['filepath']
+
+        if not filepath:
+            flash('Filepath required!')
+        else:
+            _add_bulk(filepath)
+            return redirect(url_for('index'))
+    return render_template('add_bulk.html')
+
+
+def _add_bulk(filepath):
+    parsed = parseJSON(filepath)
+    conn = get_db_connection()
+
+    for collection in parsed['collections']:
+        conn.execute("INSERT INTO gallery (title, summary) VALUES (?, ?)",
+            (collection['title'], collection['summary']))
+
+    for artist in parsed['artists']:
+        conn.execute("INSERT INTO artist (full_name, dob, summary) VALUES (?, ?, ?)",
+            (artist['full_name'], artist['dob'], artist['summary']))
+
+    conn.commit()
+
+    for art in parsed['art']:
+        query = """INSERT INTO art (title, artist, created, photo, gallery_id, summary) VALUES (?, ?, ?, ?, ?, ?)"""
+        photo = convertToBinary(art['filepath'])
+        collection = conn.execute('SELECT * FROM gallery WHERE title = ?', (art['collection_name'],)).fetchone()
+        data_tuple = (art['title'], art['artist'], art['created'], photo, collection[0], art['summary'])
+        conn.execute(query, data_tuple)
+
+    conn.commit()
+    conn.close()
+
+
 @app.route('/art/<int:id>/edit', methods=('GET', 'POST'))
 def edit_art(id):
     art = get_art(id)
@@ -199,15 +244,15 @@ def edit_art(id):
         else:
             conn = get_db_connection()
 
-            collection_id = conn.execute('SELECT * FROM gallery WHERE title = ?', (collection,)).fetchone()
+            collection = conn.execute('SELECT * FROM gallery WHERE title = ?', (collection,)).fetchone()
 
             if filepath:
                 query = "'UPDATE art SET title = ?, artist = ?, created = ?, photo = ?, gallery_id = ?, summary = ? WHERE id = ?'"
                 photo = convertToBinary(filepath)
-                data_tuple = (title, artist, created, photo, collection_id, summary, id)
+                data_tuple = (title, artist, created, photo, collection[0], summary, id)
             else:
                 query = "'UPDATE art SET title = ?, artist = ?, created = ?, gallery_id = ?, summary = ? WHERE id = ?'"
-                data_tuple = (title, artist, created, collection_id, summary, id)
+                data_tuple = (title, artist, created, collection[0], summary, id)
 
             conn.execute(query, data_tuple)
 

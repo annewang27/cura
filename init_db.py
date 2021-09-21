@@ -1,44 +1,33 @@
 import sqlite3
-
-def convertToBinary(filename):
-    with open(filename, 'rb') as file:
-        blob = file.read()
-    return blob
+from app import convertToBinary, parseJSON
 
 
 connection = sqlite3.connect('database.db')
 
-
 with open('schema.sql') as f:
     connection.executescript(f.read())
 
+# add code to empty temp_photos
+
 cur = connection.cursor()
+parsed = parseJSON('init_db.json')
 
-query = """INSERT INTO art (title, artist, created, photo, gallery_id, summary) VALUES (?, ?, ?, ?, ?, ?)"""
-photo = convertToBinary('images/persistence_of_mem.jpeg')
-data_tuple = ('The Persistence of Memory', 'Salvador Dali', '1931', photo, '1', 'very cool piece')
-cur.execute(query, data_tuple)
+for collection in parsed['collections']:
+    cur.execute("INSERT INTO gallery (title, summary) VALUES (?, ?)",
+        (collection['title'], collection['summary']))
 
-query = """INSERT INTO art (title, artist, created, photo, gallery_id, summary) VALUES (?, ?, ?, ?, ?, ?)"""
-photo = convertToBinary('images/starry_night.jpeg')
-data_tuple = ('The Starry Night', 'Vincent van Gogh', '1889', photo, '1', 'very interesting piece')
-cur.execute(query, data_tuple)
+for artist in parsed['artists']:
+    cur.execute("INSERT INTO artist (full_name, dob, summary) VALUES (?, ?, ?)",
+        (artist['full_name'], artist['dob'], artist['summary']))
 
-cur.execute("INSERT INTO gallery (title, summary) VALUES (?, ?)",
-            ('cool art', 'art of the past')
-            )
+connection.commit()
 
-cur.execute("INSERT INTO gallery (title, summary) VALUES (?, ?)",
-            ('best art', 'art of the future')
-            )
-
-cur.execute("INSERT INTO artist (full_name, dob, summary) VALUES (?, ?, ?)",
-            ('Salvador Dali', 'May 11, 1904', 'cool artist')
-            )
-
-cur.execute("INSERT INTO artist (full_name, dob, summary) VALUES (?, ?, ?)",
-            ('Vincent van Gogh', 'March 30, 1853', 'another cool artist')
-            )
+for art in parsed['art']:
+    query = """INSERT INTO art (title, artist, created, photo, gallery_id, summary) VALUES (?, ?, ?, ?, ?, ?)"""
+    photo = convertToBinary(art['filepath'])
+    collection = cur.execute('SELECT * FROM gallery WHERE title = ?', (art['collection_name'],)).fetchone()
+    data_tuple = (art['title'], art['artist'], art['created'], photo, collection[0], art['summary'])
+    cur.execute(query, data_tuple)
 
 connection.commit()
 connection.close()

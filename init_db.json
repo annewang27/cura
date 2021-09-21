@@ -1,0 +1,219 @@
+{
+    "collections": [
+        {
+            "title": "The Baroque Period",
+            "summary": "Filled with an abundance of dramatic, theatrical pieces of art that still manage to maintain an firm sense of realism, Baroque art is one of my favourite periods of art. The emphasis on playing with the effects of light on colours and shadows adds an additional layer of interest to Baroque paintings."
+        },
+        {
+            "title": "The 19th Century",
+            "summary": "This was the period that saw the biggest change in art from having a pretty unified artistic style across the board between artists, to seeing movement after movement as different artists branched out into their own unique styles and techniques. This was the period where art transitioned from being 'for the state' to being 'for the individual' and artists were given much more freedom to explore new ideas, something clearly seen in their art."
+        },
+        {
+            "title": "The First Half of the 20th Century",
+            "summary": "To me, this feels like the wilder sibling of the 19th century. The art styles from this period are hugely varied and often remind me unsettlingly of the sense of warped reality found in dreams. A lot of this art seems to question reality and the meaning of existence, either through the use of vaguely recognizable outlines or by reverting to overly strict and formal classicism. The use of colour and perspective is just as intense as the Baroque period but everything feels like it's done with an offset. Art from this period is fantastic at causing existential crises."
+        },
+        {
+            "title": "Modern Art",
+            "summary": "Modern art gets a bit of a bad rep because it can be so wildly different from what's often considered 'traditionally good' art and can seem confusing and disjointed at first glance. It often requires more work from the viewer than more traditional art does, but that's part of the beauty of it because it means that you're almost forced to form a connection to the art as you view it, in a way that doesn't happen as often with traditional art. A lot of modern art is either heavily influenced by or responding to current cultural and political events, and these pieces force you to stop and consider things from new perspectives. However, just as often, there's no hidden meaning behind a piece at all and it's just about exploring new mediums and finding new ways to create art. It took me a while before I learned to appreciate modern art but modern art gallerys are slowly becoming some of my favourites to visit in person, because while a lot of art can be well appreciated in an online format, modern art always seems to have a much greater impact on me in person."
+        }
+    ],
+    "artists": [
+        {
+            "full_name": "Michelangelo Merisi da Caravaggio",
+            "dob": "September 29, 1571",
+            "summary": "Caravaggio really took the dramatic, tortured artist stereotype to the next level. He was well known for carrying around an illegal sword and getting into arguments, all while creating paintings filled with drama and sharp, dramatic lighting. He was constantly getting in trouble with the police and eventually, fled Rome as a murderer."
+        },
+        {
+            "full_name": "Annibale Carracci",
+            "dob": "November 3, 1560",
+            "summary": "Carracci was one of the main driving forces behind the development of the Baroque movement."
+        },
+        {
+            "full_name": "Aelbert Cuyp",
+            "dob": "October 20, 1620",
+            "summary": "Cuyp's paintings of the Dutch landscape make it abundantly clear why he was one of the leading Dutch Golden Age painters."
+        },
+        {
+            "full_name": "Rembrandt Harmenszoon van Rijn",
+            "dob": "July 15, 1606",
+            "summary": "Another incredible Dutch artist, Rembrandt is well known for his ability to really capture the essence of the subject and their surroundings in a portrait. His use of light is also a marvel to admire."
+        },
+        {
+            "full_name": "Eugène Delacroix",
+            "dob": "April 26, 1798",
+            "summary": "Considered one of the greatest French Romantic painters, Delacroix was well known for his use of colour and had a huge impact on the development of Impressionist painting."
+        },
+        {
+            "full_name": "J. M. W. Turner",
+            "dob": "April 23, 1775",
+            "summary": "One of my favourite painters, Turner had an incredible ability to create paintings with an innate sense of contrast between the often harsh, violent subject matter, and his use of soft watercolours to create paintings filled with soft lines and gentle light that exude a sense of tranquility."
+        },
+        {
+            "full_name": "Claude Monet",
+            "dob": "November 14, 1840",
+            "summary": "One of the most well known artists today, Monet is often considered the founder of impressionist painting."
+        },
+        {
+            "full_name": "Vincent van Gogh",
+            "dob": "March 30, 1853",
+            "summary": "Another extremely well known artist, Van Gogh is often portrayed as an unstable man, what with the cutting off of his own ear and his extended stays in mental hospitals, but when you read the letters he sent, it becomes abundantly clear how clear headed he was, both about his mental health and the world around him."
+        },
+        {
+            "full_name": "Wassily Kandinsky",
+            "dob": "December 16, 1866",
+            "summary": "Kandinsky is credited as one of the pioneers of abstract art."
+        },
+        {
+            "full_name": "Salvador Dalí",
+            "dob": "May 11, 1904",
+            "summary": "Another one of my favourite artists, Dalí was an incredible surrealist artist who created paintings filled with bizarre imagery that still manage to speak so clearly to the human condition."
+        },
+        {
+            "full_name": "Edward Hopper",
+            "dob": "July 22, 1882",
+            "summary": "Edward Hopper was a realist painter whose paintings often evoke a sense of unsettling fakeness. He had a fantastic grasp on the use of light to create different environments."
+        },
+        {
+            "full_name": "Kenneth Noland",
+            "dob": "April 10, 1924",
+            "summary": "Noland's art explores the use of different mediums, including both the paint and the canvas, and their ability to change the effects of colours. He's one of the best known colour field painters."
+        },
+        {
+            "full_name": "Barry Le Va",
+            "dob": "December 28, 1941",
+            "summary": "One of the first 'process artists', meaning the resulting art was just as much, if not more, about the process of creating the art rather than the final piece, Barry Le Va often referred to his art as crime scenes where the viewer is meant to reconstruct the process and the concept driving them."
+        },
+        {
+            "full_name": "Robert Barry",
+            "dob": "March 9, 1936",
+            "summary": "A bit of a less traditional artist, Barry is known for his Conceptual art where the experience of viewing the art is a key part of the process. His art is meant to make you reflect and react which then impacts the way others experience the art as well."
+        },
+        {
+            "full_name": "David Hockney",
+            "dob": "July 9, 1937",
+            "summary": "Hockney is probably one of the best known British artists of the 20th century because of his huge impact on the pop art movement. His works are filled with bright colours and bold lines and have such a sense of fun and whimsy that's still firmly based in reality."
+        }
+    ],
+    "art":[
+        {
+            "title": "The Calling of Saint Matthew",
+            "artist": "Michelangelo Merisi da Caravaggio",
+            "created": "1599 - 1600",
+            "collection_name": "The Baroque Period",
+            "filepath": "images/the_calling_of_st_matthew.jpeg",
+            "summary": "Focus on the way the dramatic light illuminates different parts of each subject and adds to the telling of the story."
+        },
+        {
+            "title": "Boy Drinking",
+            "artist": "Annibale Carracci",
+            "created": "1582 - 1583",
+            "collection_name": "The Baroque Period",
+            "filepath": "images/boy_drinking.jpeg",
+            "summary": "Although not a great example of the key features of Baroque paintings, the sense of informality about this painting makes it one of my favourites."
+        },
+        {
+            "title": "Landscape with Cattle",
+            "artist": "Aelbert Cuyp",
+            "created": "1639 - 1649",
+            "collection_name": "The Baroque Period",
+            "filepath": "images/landscape_with_cattle.jpeg",
+            "summary": "Look at Cuyp's incredible ability to capture the soft late afternoon lighting and hazy air."
+        },
+        {
+            "title": "Old Man in Red",
+            "artist": "Rembrandt Harmenszoon van Rijn",
+            "created": "1652 - 1654",
+            "collection_name": "The Baroque Period",
+            "filepath": "images/old_man_in_red.jpeg",
+            "summary": "The lighting on this portrait just highlights Rembrandt's unmatched ability to capture the soul of his subject."
+        },
+        {
+            "title": "The Death of Sardanapalus",
+            "artist": "Eugène Delacroix",
+            "created": "1827",
+            "collection_name": "The 19th Century",
+            "filepath": "images/death_of_sardanapalus.jpeg",
+            "summary": "This painting portrays the legend of Sardanapalus in such a chaotic yet so well-composed way."
+        },
+        {
+            "title": "The Fighting Temeraire",
+            "artist": "J. M. W. Turner",
+            "created": "1838",
+            "collection_name": "The 19th Century",
+            "filepath": "images/the_fighting_temeraire.jpeg",
+            "summary": "I can't articulate exactly why I love this piece so much but the colours and soft brush strokes create a strange sense of loss."
+        },
+        {
+            "title": "Hôtel des Roches-Noires",
+            "artist": "Claude Monet",
+            "created": "1870",
+            "collection_name": "The 19th Century",
+            "filepath": "images/hotel_des_roches_noires.jpeg",
+            "summary": "Although not one of Monet's most well known works, this painting is incredible in its ability to make you feel exactly like you are there in Paris in the middle of summer."
+        },
+        {
+            "title": "Starry Night",
+            "artist": "Vincent van Gogh",
+            "created": "1889",
+            "collection_name": "The 19th Century",
+            "filepath": "images/starry_night.jpeg",
+            "summary": "Definitely one of the first pieces of art I fell in love with. The more you study the colours and brush strokes, the more you have to step back and admire van Gogh's genius."
+        },
+        {
+            "title": "Yellow-Red-Blue",
+            "artist": "Wassily Kandinsky",
+            "created": "1925",
+            "collection_name": "The First Half of the 20th Century",
+            "filepath": "images/yellow-red-blue.jpeg",
+            "summary": "This piece is wild. Kandinsky somehow manages to convey this idea of existence and consciousness being undefinable through the exploration of thin layers or yellow, red, and blue and the way they meld. Truly incredible."
+        },
+        {
+            "title": "The Persistence of Memory",
+            "artist": "Salvador Dalí",
+            "created": "1931",
+            "collection_name": "The First Half of the 20th Century",
+            "filepath": "images/persistence_of_mem.jpeg",
+            "summary": "My favourite painting of all time. In a relatively tiny painting, Dalí conveys everything I've ever felt about the futility of memory in a way I could never begin to properly articulate."
+        },
+        {
+            "title": "Nighthawks",
+            "artist": "Edward Hopper",
+            "created": "1942",
+            "collection_name": "The First Half of the 20th Century",
+            "filepath": "images/nighthawks.jpeg",
+            "summary": "For me, this painting gets more and more unsettling the more you look at it. The longer you look, the more you notice the subtle ways this setting seems off and it begins to feel almost like an abandoned movie set."
+        },
+        {
+            "title": "Half",
+            "artist": "Kenneth Noland",
+            "created": "1959",
+            "collection_name": "Modern Art",
+            "filepath": "images/half.jpeg",
+            "summary": "This is an example of a work of art I love simply for the use of colours and textures without any involvment of feelings or conveyed messages."
+        },
+        {
+            "title": "Continuous and Related Activities: Discontinued by the Act of Dropping",
+            "artist": "Barry Le Va",
+            "created": "1967/1990",
+            "collection_name": "Modern Art",
+            "filepath": "images/continuous_and_related_activities_dropping.jpeg",
+            "summary": "This is an example of art that truly needs to be experienced. I was lucky enough to see this in person and the experience of walking aroud it and seeing evidence of the process was so interesting."
+        },
+        {
+            "title": "All The Things I Know But of Which I Am Not at the Moment Thinking",
+            "artist": "Robert Barry",
+            "created": "1969",
+            "collection_name": "Modern Art",
+            "filepath": "images/All_The_Things_I_Know_But_of_Which_I_Am_Not_at_the_Moment_Thinking.jpeg",
+            "summary": "I love this art. It brings you back to reflecting on how little you really know yourself and your own experiences as the things at the front of your mind shift and change."
+        },
+        {
+            "title": "Pearblossom Highway 11-18 April 1986, #2",
+            "artist": "David Hockney",
+            "created": "1986",
+            "collection_name": "Modern Art",
+            "filepath": "images/pearblossom_highway_2.jpeg",
+            "summary": "This piece is a collage of photos Hockney took over the course of a week from different perspectives and at different times. Admittedly, this is definitely not the style of art he is most well known for but it's so interesting, I had to include it."
+        }
+    ]
+}

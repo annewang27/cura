@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container intro-title">
         <h2>{% block title %} {{ artist['full_name'] }} {% endblock %}</h2>
-        <h4>{{ artist['dob'] }}</h4>
+        <h4>Born: {{ artist['dob'] }}</h4>
         <p>{{ artist['summary'] }}</p>
 
         <div class="edit-button">
