@@ -99,13 +99,14 @@ def collection(collection_id):
     collection = get_collection(collection_id)
     art = get_collection_art(collection_id)
 
-    for piece in art:
-        # replace art instead of ignoring
-        file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
-        if not file_path.is_file():
+    if art:
+        for piece in art:
+            file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
             writeTofile(piece['photo'], file_path)
-            
-    return render_template('collection.html', collection=collection, art=art)
+        return render_template('collection.html', collection=collection, art=art)
+    else:
+        return render_template('collection_empty.html', collection=collection)
+    
 
 
 @app.route('/artist/<int:artist_id>')
@@ -113,12 +114,13 @@ def artist(artist_id):
     artist = get_artist(artist_id)
     art = get_artist_art(artist['full_name'])
 
-    for piece in art:
-        # replace art instead of ignoring
-        file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
-        if not file_path.is_file():
+    if art:
+        for piece in art:
+            file_path = Path("static/temp_photos/" + piece['title'].replace(" ", "_") + ".jpg")
             writeTofile(piece['photo'], file_path)
-    return render_template('artist.html', artist=artist, art=art)
+        return render_template('artist.html', artist=artist, art=art)
+    else:
+        return render_template('artist_empty.html', artist=artist)
 
 
 @app.route('/art/add', methods=('GET', 'POST'))
@@ -247,11 +249,11 @@ def edit_art(id):
             collection = conn.execute('SELECT * FROM gallery WHERE title = ?', (collection,)).fetchone()
 
             if filepath:
-                query = "'UPDATE art SET title = ?, artist = ?, created = ?, photo = ?, gallery_id = ?, summary = ? WHERE id = ?'"
+                query = """UPDATE art SET title = ?, artist = ?, created = ?, photo = ?, gallery_id = ?, summary = ? WHERE id = ?"""
                 photo = convertToBinary(filepath)
                 data_tuple = (title, artist, created, photo, collection[0], summary, id)
             else:
-                query = "'UPDATE art SET title = ?, artist = ?, created = ?, gallery_id = ?, summary = ? WHERE id = ?'"
+                query = """UPDATE art SET title = ?, artist = ?, created = ?, gallery_id = ?, summary = ? WHERE id = ?"""
                 data_tuple = (title, artist, created, collection[0], summary, id)
 
             conn.execute(query, data_tuple)

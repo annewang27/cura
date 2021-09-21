@@ -1,5 +1,6 @@
 import sqlite3
 from app import convertToBinary, parseJSON
+import os
 
 
 connection = sqlite3.connect('database.db')
@@ -7,7 +8,9 @@ connection = sqlite3.connect('database.db')
 with open('schema.sql') as f:
     connection.executescript(f.read())
 
-# add code to empty temp_photos
+dir = 'static/temp_photos'
+for f in os.listdir(dir):
+    os.remove(os.path.join(dir, f))
 
 cur = connection.cursor()
 parsed = parseJSON('init_db.json')

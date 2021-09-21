@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container intro-title">
+        <h2>{% block title %} {{ collection['title'] }} {% endblock %}</h2>
+        <p>{{ collection['summary'] }}</p>
+
+        <div class="edit-button">
+            <a href="{{ url_for('edit_collection', id=collection['id']) }}">
+                <span class="badge badge-light">Edit collection</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}

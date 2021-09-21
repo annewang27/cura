@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container intro-title">
+        <h2>{% block title %} {{ artist['full_name'] }} {% endblock %}</h2>
+        <h4>Born: {{ artist['dob'] }}</h4>
+        <p>{{ artist['summary'] }}</p>
+
+        <div class="edit-button">
+            <a href="{{ url_for('edit_artist', id=artist['id']) }}">
+                <span class="badge badge-light">Edit artist</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
